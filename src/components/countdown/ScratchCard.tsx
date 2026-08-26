@@ -46,10 +46,13 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const width = canvas.offsetWidth;
     const height = canvas.offsetHeight;
-    canvas.width = width;
-    canvas.height = height;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
 
     // Gilded metallic gold foil gradient
     const gradient = ctx.createLinearGradient(0, 0, width, height);
@@ -62,7 +65,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
     ctx.fillRect(0, 0, width, height);
 
     // Subtle diamond luxury pattern on foil
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
     for (let i = 0; i < width; i += 18) {
       for (let j = 0; j < height; j += 18) {
         ctx.beginPath();
@@ -72,11 +75,11 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
     }
 
     // Centered foil prompt text
-    ctx.font = 'bold 12px "Jost", sans-serif';
+    ctx.font = 'bold 11px "Jost", sans-serif';
     ctx.fillStyle = '#2B2622';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.letterSpacing = '3px';
+    ctx.letterSpacing = '2.5px';
     ctx.fillText('✦ SCRATCH TO UNVEIL THE DATE ✦', width / 2, height / 2);
   }, [isRevealed]);
 
@@ -86,14 +89,18 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const rect = canvas.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
+    const x = (clientX - rect.left) * dpr;
+    const y = (clientY - rect.top) * dpr;
 
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0); // operate in device pixels
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
-    ctx.arc(x, y, 26, 0, Math.PI * 2, false);
+    ctx.arc(x, y, 28 * dpr, 0, Math.PI * 2, false);
     ctx.fill();
+    ctx.restore();
 
     // Check percentage scratched
     try {
@@ -109,7 +116,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
       }
 
       const percent = (transparentCount / totalPixels) * 100;
-      if (percent > 30) {
+      if (percent > 28) {
         handleComplete();
       }
     } catch {
@@ -144,7 +151,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
   const handleTouchEnd = () => setIsScratching(false);
 
   return (
-    <div className="relative flex flex-col items-center justify-center my-6">
+    <div className="relative flex flex-col items-center justify-center my-6 w-full px-2 max-w-sm sm:max-w-md mx-auto">
       {/* Confetti Celebration Burst */}
       {confettiActive && (
         <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden" aria-hidden="true">
@@ -167,19 +174,19 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
       {/* Main Scratch Box Container */}
       <div
         ref={containerRef}
-        className="relative w-[320px] sm:w-[390px] h-[120px] sm:h-[135px] rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FAF6EE] to-[#F1E6D3] border-2 border-gold/50 shadow-xl flex flex-col items-center justify-center p-5 text-center select-none overflow-hidden group"
+        className="relative w-full max-w-[320px] sm:max-w-[390px] h-[120px] sm:h-[135px] rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FAF6EE] to-[#F1E6D3] border-2 border-gold/50 shadow-xl flex flex-col items-center justify-center p-4 sm:p-5 text-center select-none overflow-hidden group"
       >
         {/* Hidden Date Revealed Below */}
-        <div className="flex flex-col items-center justify-center">
-          <span className="eyebrow text-[11px] sm:text-xs text-brass tracking-[0.25em] mb-1">
+        <div className="flex flex-col items-center justify-center px-2">
+          <span className="eyebrow text-[10px] sm:text-xs text-brass tracking-[0.25em] mb-1">
             {subText}
           </span>
-          <h3 className="font-display italic text-2xl sm:text-3xl font-semibold text-charcoal tracking-wide flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-gold fill-gold/30" />
-            {dateText}
-            <Sparkles className="w-4 h-4 text-gold fill-gold/30" />
+          <h3 className="font-display italic text-2xl sm:text-3xl font-semibold text-charcoal tracking-wide flex items-center gap-1.5 sm:gap-2">
+            <Sparkles className="w-4 h-4 text-gold fill-gold/30 shrink-0" />
+            <span>{dateText}</span>
+            <Sparkles className="w-4 h-4 text-gold fill-gold/30 shrink-0" />
           </h3>
-          <span className="text-[11px] font-sans text-taupe tracking-wider mt-1 uppercase font-medium">
+          <span className="text-[10px] sm:text-[11px] font-sans text-taupe tracking-wider mt-1 uppercase font-medium">
             Sunday • 7:00 PM Onwards
           </span>
         </div>
@@ -194,7 +201,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
             >
               <canvas
                 ref={canvasRef}
-                className="w-full h-full rounded-3xl block"
+                className="w-full h-full rounded-3xl block touch-none"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
@@ -215,9 +222,9 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
 
       {/* Helper Prompt */}
       {!isRevealed && (
-        <p className="font-sans text-xs text-taupe/80 mt-2.5 tracking-wider font-light flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
-          Tap or scratch with finger/mouse to unveil date
+        <p className="font-sans text-xs text-taupe/80 mt-2.5 tracking-wider font-light flex items-center gap-1.5 text-center">
+          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping shrink-0" />
+          Tap or swipe finger to unveil date
         </p>
       )}
     </div>

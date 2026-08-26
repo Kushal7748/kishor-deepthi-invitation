@@ -34,7 +34,7 @@ export const MusicPlayer: React.FC = () => {
       {music.src && <audio ref={audioRef} src={music.src} loop preload="auto" />}
 
       {/* Floating Audio & Auto-Scroll Controller */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2 select-none pointer-events-auto">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2 select-none pointer-events-auto max-w-[85vw] pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]">
         {/* Active Track Banner & Auto-Scroll Badge */}
         <AnimatePresence>
           {isPlaying && (
@@ -45,9 +45,9 @@ export const MusicPlayer: React.FC = () => {
               className="flex flex-col items-end gap-1.5"
             >
               {/* Song Title Pill */}
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF6EE]/95 backdrop-blur-md border border-gold/40 shadow-lg text-charcoal">
-                <Music className="w-3.5 h-3.5 text-gold animate-bounce" />
-                <span className="font-sans text-[11px] font-medium tracking-wide">
+              <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6EE]/95 backdrop-blur-md border border-gold/40 shadow-lg text-charcoal max-w-full">
+                <Music className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gold animate-bounce shrink-0" />
+                <span className="font-sans text-[10px] sm:text-[11px] font-medium tracking-wide truncate">
                   {trackTitle} <span className="text-taupe font-normal">• {trackArtist}</span>
                 </span>
               </div>
@@ -56,14 +56,14 @@ export const MusicPlayer: React.FC = () => {
               <button
                 type="button"
                 onClick={toggleAutoScroll}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-sans font-medium tracking-wider uppercase backdrop-blur-md border transition-all duration-300 shadow-sm cursor-pointer ${
+                className={`flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-sans font-medium tracking-wider uppercase backdrop-blur-md border transition-all duration-300 shadow-sm cursor-pointer ${
                   isAutoScrolling && !isUserInteracting
                     ? 'bg-gold/20 text-brass border-gold/50 hover:bg-gold/30'
                     : 'bg-[#FAF6EE]/90 text-taupe border-gold/30 hover:bg-gold/10'
                 }`}
                 title="Click to toggle automatic cinematic story scroll"
               >
-                <Sparkles className={`w-3 h-3 ${isAutoScrolling && !isUserInteracting ? 'text-gold animate-spin' : 'text-taupe'}`} style={{ animationDuration: '4s' }} />
+                <Sparkles className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${isAutoScrolling && !isUserInteracting ? 'text-gold animate-spin' : 'text-taupe'}`} style={{ animationDuration: '4s' }} />
                 <span>
                   {isUserInteracting
                     ? 'Scroll Paused'
@@ -87,7 +87,7 @@ export const MusicPlayer: React.FC = () => {
           onClick={togglePlay}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
-          className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-gold/50 shadow-xl flex items-center justify-center cursor-pointer transition-all duration-300 ${
+          className={`relative w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-gold/50 shadow-xl flex items-center justify-center cursor-pointer transition-all duration-300 ${
             isPlaying
               ? 'bg-gradient-to-br from-[#B8905A] to-[#8C6A3F] text-ivory ring-4 ring-gold/20'
               : 'bg-[#FAF6EE]/90 backdrop-blur-md text-gold hover:bg-gold/10'
@@ -100,9 +100,9 @@ export const MusicPlayer: React.FC = () => {
           )}
 
           {isPlaying ? (
-            <Volume2 className="w-5 h-5 drop-shadow-xs" />
+            <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 drop-shadow-xs" />
           ) : (
-            <VolumeX className="w-5 h-5 text-taupe/80" />
+            <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-taupe/80" />
           )}
         </motion.button>
       </div>

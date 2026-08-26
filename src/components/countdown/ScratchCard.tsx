@@ -187,7 +187,7 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
             <Sparkles className="w-4 h-4 text-gold fill-gold/30 shrink-0" />
           </h3>
           <span className="text-[10px] sm:text-[11px] font-sans text-taupe tracking-wider mt-1 uppercase font-medium">
-            Sunday • 7:00 PM Onwards
+            Sunday • 10:30 AM
           </span>
         </div>
 

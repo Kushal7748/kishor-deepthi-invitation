@@ -61,10 +61,10 @@ export const InvitationGate: React.FC<InvitationGateProps> = ({ isOpen, onOpen }
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-10 max-w-sm sm:max-w-lg w-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EE] to-[#F3EAD9] rounded-3xl p-6 sm:p-12 border-2 border-gold/40 shadow-2xl text-center flex flex-col items-center mx-auto"
           >
-            {/* Top Sacred Om / Blessing Accent */}
-            <div className="flex items-center gap-1.5 sm:gap-2 text-gold/70 text-[10px] sm:text-xs font-serif tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-2 sm:mb-4">
+            {/* Top Sacred Om / Blessing Accent in Kannada */}
+            <div className="flex items-center gap-1.5 sm:gap-2 text-gold/80 text-xs sm:text-sm font-serif tracking-[0.2em] mb-2 sm:mb-4">
               <span>॥</span>
-              <span>श्री गणेशाय नमः</span>
+              <span className="font-medium">ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ</span>
               <span>॥</span>
             </div>
 

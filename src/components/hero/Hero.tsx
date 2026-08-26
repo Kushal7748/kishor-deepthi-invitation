@@ -45,8 +45,8 @@ export const Hero: React.FC = () => {
           </svg>
         </div>
 
-        <p className="font-serif tracking-[0.25em] text-xs sm:text-sm font-medium text-brass uppercase">
-          ॥ Shree Ganeshaya Namah ॥
+        <p className="font-serif tracking-[0.2em] text-sm sm:text-base font-semibold text-brass">
+          ॥ ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ ॥
         </p>
       </motion.div>
 

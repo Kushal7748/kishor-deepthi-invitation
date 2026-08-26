@@ -71,8 +71,8 @@ export const invitationConfig: InvitationConfig = {
     day: 6,
     month: 'September',
     year: 2026, // Active target year for live countdown
-    time: '7:00 PM',
-    timeLabel: 'Evening Celebration',
+    time: '10:30 AM',
+    timeLabel: 'Sunday • 10:30 AM',
   },
 
   copy: {

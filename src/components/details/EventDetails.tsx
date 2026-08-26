@@ -9,22 +9,22 @@ export const EventDetails: React.FC = () => {
 
   const itinerary = [
     {
-      time: '7:00 PM',
-      title: 'Swagatam & Welcome Soirée',
-      description: 'Arrival of esteemed guests, family greetings, and refreshing welcome drinks.',
+      time: '10:30 AM',
+      title: 'Welcome & Greetings',
+      description: 'Arrival of esteemed family & friends, warm greetings, and welcome drinks.',
       icon: '🪔',
     },
     {
-      time: '7:45 PM',
-      title: 'The Sacred Ring Exchange',
-      description: 'The auspicious moment as Kishor & Deepthi exchange rings and exchange their promises of a lifetime.',
+      time: '11:30 AM',
+      title: 'Ring Exchange',
+      description: 'The auspicious moment as Kishor & Deepthi exchange their rings and promises.',
       icon: '💍',
     },
     {
-      time: '8:30 PM',
-      title: 'Royal Banquet & Dinner',
-      description: 'A lavish feast, joyous music, photographs, and warm blessings with the couple.',
-      icon: '🥂',
+      time: '12:30 PM',
+      title: 'Lunch',
+      description: 'A delicious grand celebratory lunch, photographs, and joyful blessings with the couple.',
+      icon: '🍲',
     },
   ];
 
@@ -39,7 +39,7 @@ export const EventDetails: React.FC = () => {
           </h2>
           <GoldDivider variant="ornate" width="sm" className="my-5" />
           <p className="font-sans text-xs sm:text-sm text-taupe max-w-md mx-auto">
-            Join us for an unforgettable evening of love, laughter, and sacred traditions.
+            Join us for an auspicious day of love, laughter, and sacred traditions.
           </p>
         </SectionReveal>
 
@@ -88,7 +88,7 @@ export const EventDetails: React.FC = () => {
 
             <div className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-sans uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{event.day}th {event.month} {event.year}</span>
+              <span>{event.day}th {event.month} {event.year} • 10:30 AM</span>
             </div>
           </div>
         </SectionReveal>

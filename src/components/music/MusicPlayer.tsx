@@ -1,14 +1,13 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, VolumeX, Music } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Volume2, VolumeX } from 'lucide-react';
 import { useAudioPlayer } from './useAudioPlayer';
 import { useAutoScroll } from '../../hooks/useAutoScroll';
 import { invitationConfig } from '../../config/invitation';
 
 export const MusicPlayer: React.FC = () => {
-  const { isPlaying, togglePlay, audioRef, iframeRef, trackTitle, trackArtist, youtubeId } =
-    useAudioPlayer();
-  
+  const { isPlaying, togglePlay, audioRef, iframeRef, youtubeId } = useAudioPlayer();
+
   // Automatic cinematic scroll runs silently in background when music is playing
   useAutoScroll({
     isPlaying,
@@ -36,26 +35,8 @@ export const MusicPlayer: React.FC = () => {
       {/* Hidden Native Audio Element (if local src is provided) */}
       {music.src && <audio ref={audioRef} src={music.src} loop preload="auto" />}
 
-      {/* Floating Audio Controller */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2 select-none pointer-events-auto max-w-[85vw] pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]">
-        {/* Active Track Banner */}
-        <AnimatePresence>
-          {isPlaying && (
-            <motion.div
-              initial={{ opacity: 0, y: 15, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 15, scale: 0.95 }}
-              className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-[#FAF6EE]/95 backdrop-blur-md border border-gold/40 shadow-lg text-charcoal max-w-full"
-            >
-              <Music className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gold animate-bounce shrink-0" />
-              <span className="font-sans text-[10px] sm:text-[11px] font-medium tracking-wide truncate">
-                {trackTitle} <span className="text-taupe font-normal">• {trackArtist}</span>
-              </span>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Master Sound Button */}
+      {/* Minimalist Floating Audio Button */}
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 select-none pointer-events-auto pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]">
         <motion.button
           type="button"
           onClick={togglePlay}

@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Palette: warm ivory / champagne / muted gold / charcoal ---- */
+  --color-ivory: #FAF6EE;
+  --color-champagne: #F1E6D3;
+  --color-blush: #EFDCD3;
+  --color-gold: #B8905A;
+  --color-brass: #8C6A3F;
+  --color-charcoal: #2B2622;
+  --color-taupe: #6E6459;
+
+  /* ---- Typography ---- */
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Jost", "Inter", system-ui, sans-serif;
+
+  /* ---- Motion easing token (soft decelerate) ---- */
+  --ease-invite: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100svh;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--color-gold);
+  }
+
+  .clip-path-top-flap {
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+
+  .clip-path-bottom-pocket {
+    clip-path: polygon(0 100%, 100% 100%, 50% 0);
+  }
+}

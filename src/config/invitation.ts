@@ -82,7 +82,7 @@ export const invitationConfig: InvitationConfig = {
     },
     {
       role: "Bride's Family",
-      parents: 'Venkatesh & Gangaas',
+      parents: 'Venkatesh & Ganga',
       familyText: '& Family',
     },
   ],

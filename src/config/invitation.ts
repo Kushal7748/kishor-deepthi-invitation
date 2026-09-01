@@ -6,12 +6,20 @@ export interface ImageAsset {
   orientation?: 'portrait' | 'landscape' | 'square';
 }
 
+export interface FamilyMember {
+  role: string;
+  parents: string;
+  familyText: string;
+}
+
 export interface InvitationConfig {
   couple: {
     partnerA: string;
     partnerB: string;
     monogram: string;
   };
+
+  families: FamilyMember[];
 
   event: {
     title: string;
@@ -65,6 +73,19 @@ export const invitationConfig: InvitationConfig = {
     partnerB: 'Deepthi V',
     monogram: 'K & D',
   },
+
+  families: [
+    {
+      role: "Groom's Family",
+      parents: 'Venkatesh M & Pushpalatha H',
+      familyText: '& Family',
+    },
+    {
+      role: "Bride's Family",
+      parents: 'Venkatesh & Gangaas',
+      familyText: '& Family',
+    },
+  ],
 
   event: {
     title: 'Ring Ceremony',

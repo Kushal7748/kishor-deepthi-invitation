@@ -4,7 +4,7 @@ import { Hero } from './components/hero/Hero';
 import { Countdown } from './components/countdown/Countdown';
 import { EventDetails } from './components/details/EventDetails';
 import { CoupleIntro } from './components/intro/CoupleIntro';
-import { RsvpSection } from './components/rsvp/RsvpSection';
+import { FamilySection } from './components/family/FamilySection';
 import { LocationSection } from './components/location/LocationSection';
 import { FinalInvitation } from './components/final/FinalInvitation';
 import { Footer } from './components/layout/Footer';
@@ -40,8 +40,8 @@ export function App() {
         {/* 4. Couple Narrative & Framed Photo Story */}
         <CoupleIntro />
 
-        {/* 5. Families & Interactive RSVP with WhatsApp Integration */}
-        <RsvpSection />
+        {/* 5. The Families & Blessings */}
+        <FamilySection />
 
         {/* 6. Destination Venue & Google Maps Deep-Link */}
         <LocationSection />

@@ -1,32 +1,21 @@
-# React + TypeScript + Vite
+# Kishor & Deepthi — Ring Ceremony Digital Invitation
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A bespoke, luxury wedding digital invitation for **Kishor V & Deepthi V**.
 
-Currently, two official plugins are available:
+## ✨ Features
+- **3D Royal Envelope Unboxing Gate**: With authentic Kannada blessing `॥ ಶ್ರೀ ಗಣೇಶಾಯ ನಮಃ ॥`.
+- **Interactive Scratch-to-Reveal Date**: Gold foil scratch card revealing *Sunday • 10:30 AM*.
+- **Live Real-Time Countdown**: Counting down to **September 6, 2026**.
+- **Celebration Itinerary**:
+  - 🪔 10:30 AM — Welcome & Greetings
+  - 💍 11:30 AM — Ring Exchange
+  - 🍲 12:30 PM — Lunch
+- **Background Music & Story Glide**: Featuring *"Naguva Nayana"* with automated cinematic background story scrolling and touch pause/resume.
+- **Interactive Venue Map**: Deep links to Akshara Banquet & Lawns, Bengaluru on Google Maps.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 🛠️ Tech Stack
+- React 19 + TypeScript + Vite
+- Tailwind CSS v4
+- Framer Motion
+- Lucide React
+- Deployed on Vercel
